@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>How to Play - Typoclypse</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #151F5D, #01072e);
+      color: white;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo {
+      width: 220px;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #eaefee;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px #487be8;
+    }
+
+    .instruction-box {
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid #e8f1e0;
+      border-radius: 20px;
+      padding: 2rem;
+      max-width: 800px;
+      box-shadow: 0 0 20px rgba(0, 255, 195, 0.2);
+    }
+
+    .instruction-box h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #f7f7f7;
+      text-align: center;
+    }
+
+    .instruction-box ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+
+    .instruction-box ul li {
+      margin: 1rem 0;
+      font-size: 1.1rem;
+      line-height: 1.6;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .instruction-box ul li::before {
+      content: "⚡";
+      position: absolute;
+      left: 0;
+      color: #00ffc3;
+    }
+
+    .back-btn {
+      margin-top: 2rem;
+      padding: 0.7rem 2rem;
+      background: #c8c282;
+      color: #0f0f0f;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+      box-shadow: 0 0 10px #00ffc3;
+    }
+
+    .back-btn:hover {
+      background: #0f0f0f;
+      color: #00ffc3;
+      border: 2px solid #00ffc3;
+    }
+  </style>
+</head>
+<body>
+  <img src="logo.png" alt="Typoclypse Logo" class="logo">
+  <h1>How to Play</h1>
+
+  <div class="instruction-box">
+    <h2>Unleash the Typing Storm! 🌩️</h2>
+    <ul>
+      <li>Start by joining a game room—either public or private. Invite your friends or compete with random players!</li>
+      <li>Once everyone is in, a paragraph will appear on the screen.</li>
+      <li>Your mission? Type it *as fast and accurately as you can!* ⌨️</li>
+      <li>Every correct word boosts your score. Mistakes? They slow you down!</li>
+      <li>Once the timer runs out or all players finish, the **leaderboard** will appear with rankings.</li>
+      <li>Top scorers climb the leaderboard. Beat the speed, beat the world!</li>
+      <li>Play again or hop into another room for a rematch!</li>
+    </ul>
+  </div>
+
+  <button class="back-btn" onclick="window.location.href='index.html'">← Back to Home</button>
+</body>
+</html>

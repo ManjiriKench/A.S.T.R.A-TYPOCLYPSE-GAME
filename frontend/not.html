@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Not Found</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden; /* Hide any overflow */
+            background-color: #21213f; /* Dark background color from the image */
+        }
+
+        .container {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            /* Gradient for the left dark section */
+            background: linear-gradient(to right, #21213f 60%, #fce8ad 60%); /* Split background */
+        }
+
+        .left-section {
+            flex: 3; /* Takes 60% width */
+            display: flex;
+            flex-direction: column; /* Changed to column to stack text and button */
+            justify-content: center;
+            align-items: flex-start; /* Align text to the left */
+            padding-left: 8%; /* Indent text from the left edge */
+            position: relative; /* For background decorative elements */
+            overflow: hidden; /* Hide decorative elements that go outside */
+        }
+
+        .room-not-found-text {
+            font-size: 5em; /* Large font size */
+            font-weight: 700;
+            color: #ffffff; /* White text */
+            line-height: 1.1em; /* Adjust line height for "ROOM NOT FOUND" */
+            text-transform: uppercase;
+            margin-bottom: 30px; /* Space between text and button */
+            z-index: 1; /* Ensure text is above decorative elements */
+        }
+
+        /* Style for the new button */
+        .try-again-button {
+            padding: 12px 30px;
+            background-color: #fbd66d; /* Yellow color, similar to points circle in leaderboard */
+            color: #333; /* Dark text for contrast */
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2em;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none; /* Remove underline for anchor tag */
+            display: inline-block; /* Allows padding and width */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            z-index: 1;
+        }
+
+        .try-again-button:hover {
+            background-color: #f9c235; /* Slightly darker yellow on hover */
+            transform: translateY(-2px); /* Slight lift effect */
+        }
+
+        /* Decorative background elements on the left */
+        .decorative-element {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.1); /* Subtle white transparency */
+            opacity: 0.6;
+            z-index: 0;
+        }
+
+        .decorative-element.circle-small {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+        }
+
+        .decorative-element.circle-large {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+        }
+
+        .decorative-element.wavy-line {
+            width: 40px;
+            height: 5px;
+            border-radius: 5px;
+            transform: rotate(45deg); /* Slight rotation */
+        }
+        .decorative-element.wavy-line::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-color: inherit;
+            border-radius: inherit;
+            transform: rotate(90deg) translateX(10px); /* Simulate a wave */
+        }
+
+
+        /* Positioning for decorative elements (adjust as needed) */
+        .left-section .decorative-element:nth-child(1) { top: 10%; left: 15%; } /* wavy line */
+        .left-section .decorative-element:nth-child(2) { top: 20%; left: 5%; } /* small circle */
+        .left-section .decorative-element:nth-child(3) { top: 40%; left: 18%; } /* large circle */
+        .left-section .decorative-element:nth-child(4) { bottom: 20%; left: 10%; transform: rotate(-30deg); } /* wavy line */
+        .left-section .decorative-element:nth-child(5) { bottom: 5%; left: 25%; } /* small circle */
+
+
+        .right-section {
+            flex: 2; /* Takes 40% width */
+            background-color: #fce8ad; /* Light yellow background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .exclamation-image {
+            max-width: 90%; /* Adjust size of the image */
+            max-height: 90%;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(5px 5px 15px rgba(0,0,0,0.2)); /* Subtle shadow */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+                background: #21213f; /* Uniform background on small screens */
+            }
+
+            .left-section {
+                flex: none;
+                width: 100%;
+                height: 60vh; /* Adjust height for top section */
+                padding: 0; /* Remove padding */
+                justify-content: center;
+                align-items: center; /* Center text and button horizontally */
+            }
+
+            .room-not-found-text {
+                font-size: 3.5em; /* Smaller font size */
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .try-again-button {
+                font-size: 1em;
+                padding: 10px 25px;
+            }
+
+            .right-section {
+                flex: none;
+                width: 100%;
+                height: 40vh; /* Adjust height for bottom section */
+                background-color: #fce8ad;
+            }
+
+            .exclamation-image {
+                max-width: 70%;
+                max-height: 70%;
+            }
+
+            .decorative-element {
+                display: none; /* Hide decorative elements on smaller screens if they clutter */
+            }
+        }
+
+        @media (max-width: 600px) {
+            .room-not-found-text {
+                font-size: 2.5em;
+            }
+            .left-section {
+                height: 55vh;
+            }
+            .right-section {
+                height: 45vh;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .room-not-found-text {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <div class="decorative-element wavy-line"></div>
+            <div class="decorative-element circle-small"></div>
+            <div class="decorative-element circle-large"></div>
+            <div class="decorative-element wavy-line"></div>
+            <div class="decorative-element circle-small"></div>
+
+            <h1 class="room-not-found-text">
+                ROOM <br>NOT <br>FOUND
+            </h1>
+            <a href="game.html" class="try-again-button">Try Again</a>
+        </div>
+        <div class="right-section">
+            <img src="not.png" alt="Exclamation Mark Stick Figure" class="exclamation-image">
+        </div>
+    </div>
+</body>
+</html>

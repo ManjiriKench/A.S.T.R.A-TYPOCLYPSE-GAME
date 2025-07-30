@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up Page</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f1f1f1;
+    }
+
+    .container {
+      display: flex;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    .left {
+      flex: 1; /* Allows the left section to take up available space */
+      background: linear-gradient(135deg, #1e1f3f, #0a013d, #000011);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+    }
+
+    .left img {
+      max-width: 90%;
+      height: auto;
+    }
+
+    .right {
+      flex: 1; /* Allows the right section to take up available space, reducing the gap */
+      /* Original width: 300px; is removed to allow flex to manage width */
+      background-color: #fef1d6;
+      padding: 40px 30px;
+      border-top-right-radius: 30px;
+      border-bottom-right-radius: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .right h2 {
+      margin-bottom: 25px;
+      font-size: 28px;
+      color: #111;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+      color: #222;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      background-color: #e8e1cf;
+      color: #333;
+      font-size: 14px;
+    }
+
+    .btn {
+      background-color: #111;
+      color: white;
+      border: none;
+      border-radius: 15px;
+      padding: 12px;
+      width: 100%;
+      margin-top: 15px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .divider {
+      text-align: center;
+      margin: 20px 0;
+      font-weight: 500;
+      color: #444;
+    }
+
+    .login-btn {
+      background-color: #e8e1cf;
+      color: #333;
+      border: none;
+      border-radius: 15px;
+      padding: 12px;
+      width: 100%;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      .left {
+        height: 300px;
+      }
+      .right {
+        width: 100%; /* Ensures full width on smaller screens */
+        border-radius: 0;
+        box-shadow: none;
+        flex: auto; /* Allow it to adjust based on content */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left">
+      <img src="s2.png" alt="Muscular Stickman" />
+    </div>
+    <div class="right">
+      <h2>Sign up</h2>
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" placeholder="Daniel Gallego" />
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="hello@reallygreatsite.com" />
+      </div>
+      <div class="form-group" style="display: flex; gap: 10px;">
+        <input type="password" placeholder="Password" />
+        <input type="password" placeholder="Confirm Password" />
+      </div>
+      <button class="btn"onclick="window.location.href='login.html'">Create Account</button>
+      <div class="divider">Or</div>
+      <button class="login-btn"onclick="window.location.href='login.html'">Log in</button>
+    </div>
+  </div>
+</body>
+</html>
