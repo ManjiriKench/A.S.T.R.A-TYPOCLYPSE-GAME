@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Typoclypse</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at center, #151F5D 20%, #000032 80%);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    .container {
+      text-align: center;
+      padding-top: 40px;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      background: linear-gradient(to bottom, #f8f6d2, #c8c282);
+      color: #333;
+      font-weight: bold;
+      border: none;
+      border-radius: 20px;
+      margin: 10px;
+      font-size: 18px;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0px 4px 12px rgba(255, 255, 255, 0.2);
+    }
+
+    .title-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 60px;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .title-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .type {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .tile {
+      background-color: #F4ECD8;
+      color: #000;
+      font-size: 55px;
+      font-weight: bold;
+      width: 90px;
+      height: 90px;
+      margin: 6px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      font-family: 'Arial Black', sans-serif;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+    }
+
+    .tile::after {
+      content: attr(data-score);
+      position: absolute;
+      bottom: 6px;
+      right: 8px;
+      font-size: 14px;
+      font-weight: normal;
+    }
+
+    .rush {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .rush span {
+      font-size: 55px;
+      font-family: 'Fantasy', cursive;
+      background: #fff;
+      color: #000;
+      padding: 10px 16px;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+    }
+
+    .illustration img {
+      width: 500px;
+      max-width: 90vw;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @media (max-width: 768px) {
+      .title-section {
+        flex-direction: column;
+      }
+
+      .illustration img {
+        width: 350px;
+      }
+
+      .tile {
+        font-size: 40px;
+        width: 70px;
+        height: 70px;
+      }
+
+      .rush span {
+        font-size: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div>
+      <button class="btn"onclick="window.location.href='login.html'">Play Now</button>
+      <!-- Button now links to howtoplay.html -->
+      <button class="btn" onclick="window.location.href='howtoplay.html'">How to Play</button>
+      <button class="btn"onclick="window.location.href='sign.html'">Sign up</button>
+    </div>
+
+    <div class="title-section">
+      <!-- Left side: Typoclypse title -->
+      <div class="title-block">
+        <div class="type">
+          <div class="tile" data-score="1">T</div>
+          <div class="tile" data-score="4">Y</div>
+          <div class="tile" data-score="3">P</div>
+          <div class="tile" data-score="1">O</div>
+        </div>
+
+        <div class="rush">
+          <span>C</span>
+          <span>L</span>
+          <span>Y</span>
+          <span>P</span>
+          <span>S</span>
+          <span>E</span>
+        </div>
+      </div>
+
+      <!-- Right side: Stickman image -->
+      <div class="illustration">
+        <img src="1.png" alt="Stickman running from time">
+      </div>
+    </div>
+  </div>
+</body>
+</html>

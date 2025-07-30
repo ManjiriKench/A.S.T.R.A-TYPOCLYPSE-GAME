@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Typing Interface</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #fce8ad; /* Soft yellow */
+      overflow: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .background-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 60%;
+      background: #0b1035; /* Dark blue for the table */
+      border-top-left-radius: 50% 20%;
+      border-top-right-radius: 50% 20%;
+      z-index: 0;
+    }
+
+    .laptop {
+      position: absolute;
+      width: 320px;
+      z-index: 1;
+    }
+
+    .laptop-left {
+      bottom: 22%;
+      left: 10%;
+      transform: rotate(-10deg);
+    }
+
+    .laptop-top {
+      bottom: 48%;
+      left: 50%;
+      transform: translateX(-50%) scale(1.1);
+    }
+
+    .laptop-right {
+      bottom: 22%;
+      right: 10%;
+      transform: rotate(10deg);
+    }
+
+    .content-box {
+      position: absolute;
+      bottom: 15%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #fff;
+      padding: 25px 30px;
+      border-radius: 12px;
+      width: 500px;
+      max-width: 90%;
+      z-index: 2;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      outline: 4px solid #d2c8ea;
+      outline-offset: -10px;
+    }
+
+    .content-box p {
+      font-size: 1rem;
+      line-height: 1.6;
+      text-align: justify;
+      color: #333;
+    }
+
+    .countdown {
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #fff;
+      padding: 10px 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      font-size: 2rem;
+      font-weight: 600;
+      color: #0b1035;
+      z-index: 3;
+      outline: 3px solid #d2c8ea;
+    }
+
+    @media (max-width: 768px) {
+      .laptop {
+        width: 180px;
+      }
+
+      .laptop-top {
+        bottom: 52%;
+      }
+
+      .content-box {
+        width: 90%;
+        padding: 20px;
+        font-size: 0.9rem;
+      }
+
+      .content-box p {
+        font-size: 0.85rem;
+      }
+
+      .countdown {
+        font-size: 1.5rem;
+        padding: 8px 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .laptop {
+        width: 130px;
+      }
+
+      .content-box {
+        padding: 15px;
+        outline-width: 3px;
+      }
+
+      .countdown {
+        font-size: 1.2rem;
+        padding: 6px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Countdown Timer -->
+  <div class="countdown" id="countdown">60</div>
+
+  <!-- Navy round "table" background -->
+  <div class="background-bottom"></div>
+
+  <!-- Laptops around the box -->
+  <img src="l1.png" alt="Laptop Left" class="laptop laptop-left">
+  <img src="l2.png" alt="Laptop Top" class="laptop laptop-top">
+  <img src="l3.png" alt="Laptop Right" class="laptop laptop-right">
+
+  <!-- Typing content box -->
+  <div class="content-box">
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur tincidunt finibus diam. Nulla ornare mollis risus sed mattis. Nunc at mauris ut velit sollicitudin dignissim ac eget turpis. Duis quis laoreet tellus, eu condimentum mauris. Suspendisse at diam eget quam laoreet viverra.
+    </p>
+  </div>
+
+  <!-- JavaScript Countdown Logic -->
+  <script>
+    let countdown = 60;
+    const countdownElement = document.getElementById('countdown');
+
+    const interval = setInterval(() => {
+      countdown--;
+      countdownElement.textContent = countdown;
+
+      if (countdown <= 0) {
+        clearInterval(interval);
+        window.location.href = "leaderboard.html"; // 👈 Redirect to leaderboard
+      }
+    }, 1000);
+  </script>
+
+</body>
+</html>

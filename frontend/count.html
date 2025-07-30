@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Countdown</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #0c0c3f, #1a1a60);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #f5deb3;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .countdown-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      z-index: 1;
+    }
+
+    .countdown {
+      font-size: 150px;
+      font-weight: bold;
+      color: gold;
+      animation: fade 1s ease-in-out;
+    }
+
+    .stickman {
+      width: 120px;
+      height: auto;
+      animation: stickmanWaveTap 2s ease-in-out infinite;
+    }
+
+    .loading-text {
+      font-size: 2em;
+      font-weight: 400;
+      color: #f5deb3;
+      opacity: 0;
+      animation: fadeInText 1.5s forwards 3s;
+      text-align: center;
+      z-index: 1;
+    }
+
+    .background-shape-left, .background-shape-right {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(74, 62, 140, 0.6) 0%, rgba(33, 33, 63, 0) 70%);
+      border-radius: 50%;
+      filter: blur(80px);
+      z-index: 0;
+    }
+
+    .background-shape-left {
+      top: 10%;
+      left: -10%;
+      animation: floatEffect 5s ease-in-out infinite alternate;
+    }
+
+    .background-shape-right {
+      bottom: 5%;
+      right: -10%;
+      animation: floatEffect 6s ease-in-out infinite alternate reverse;
+    }
+
+    @keyframes fade {
+      0% { opacity: 0; transform: scale(0.5); }
+      50% { opacity: 1; transform: scale(1.1); }
+      100% { opacity: 0; transform: scale(0.5); }
+    }
+
+    @keyframes fadeInText {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes floatEffect {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(20px, 30px); }
+    }
+
+    @keyframes stickmanWaveTap {
+      0% { transform: translateY(0) rotate(0deg); }
+      25% { transform: translateY(-5px) rotate(5deg); }
+      50% { transform: translateY(0) rotate(0deg); }
+      75% { transform: translateY(-3px) rotate(-5deg); }
+      100% { transform: translateY(0) rotate(0deg); }
+    }
+
+    @media (max-width: 480px) {
+      .countdown {
+        font-size: 80px;
+      }
+
+      .loading-text {
+        font-size: 1.2em;
+      }
+
+      .stickman {
+        width: 70px;
+      }
+
+      .background-shape-left, .background-shape-right {
+        width: 200px;
+        height: 200px;
+        filter: blur(50px);
+      }
+
+      .countdown-container {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="background-shape-left"></div>
+  <div class="background-shape-right"></div>
+
+  <!-- Countdown with Stickman -->
+  <div class="countdown-container">
+    <div id="count" class="countdown">3</div>
+    <img src="stickman.png" alt="Stickman" class="stickman" />
+  </div>
+
+  <!-- Loading text -->
+  <div id="loadingText" class="loading-text">loading...</div>
+
+  <!-- Script -->
+  <script>
+    const count = document.getElementById("count");
+    const loadingText = document.getElementById("loadingText");
+    let num = 3;
+
+    const interval = setInterval(() => {
+      num--;
+      if (num === 0) {
+        clearInterval(interval);
+        count.style.display = 'none';
+        loadingText.style.animation = "fadeInText 1.5s forwards";
+        setTimeout(() => {
+          window.location.href = "type.html";
+        }, 2000);
+      } else {
+        count.innerText = num;
+        count.style.animation = "none";
+        void count.offsetWidth;
+        count.style.animation = "fade 1s ease-in-out";
+      }
+    }, 1000);
+  </script>
+
+</body>
+</html>
