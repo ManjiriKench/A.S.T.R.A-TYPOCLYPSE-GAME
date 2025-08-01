@@ -1,5 +1,5 @@
 {
-  "name": "TYPOCLYPSE",
+  "name": "typoclypse",
   "version": "1.0.0",
   "description": "Backend server using Node.js, Express, MongoDB, and Socket.IO",
   "main": "app.js",
