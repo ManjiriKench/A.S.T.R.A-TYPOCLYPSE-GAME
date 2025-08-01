@@ -175,43 +175,114 @@
 
   <div class="container">
     <div class="left">
-      <h1>GAME<br/>ROOMS</h1>
+      <h1>GAME<br />ROOMS</h1>
       <div class="input-group">
-        <input type="text" placeholder="create room    Olivia Wilson" />
-        <input type="text" placeholder="join room       hello@reallygreatsite.com" />
+        <input type="text" id="create-input" placeholder="create room    Olivia Wilson" />
+        <input type="text" id="join-input" placeholder="join room       hello@reallygreatsite.com" />
       </div>
-      <div class="teammates-box">
+
+      <div class="teammates-box" id="teammates-box">
         <h3>Team Mates</h3>
-        <div class="teammate"><img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="avatar" /> Teammate 1</div>
-        <div class="teammate"><img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="avatar" /> Teammate 2</div>
-        <div class="teammate"><img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="avatar" /> Teammate 3</div>
+        <div class="teammate">Waiting for room...</div>
       </div>
-      <button class="start-game-btn" onclick="window.location.href='count.html'">Start Game</button>
+
+      <button class="start-game-btn" id="start-btn" style="display: none;">Start Game</button>
     </div>
     <div class="right">
       <img src="img/image.png" alt="Game Room Visual" />
     </div>
   </div>
 
-  <!-- Timer Script -->
+  <!-- Timer Script + Room Logic -->
   <script>
-    let totalSeconds = 5 * 60; // 5 minutes
+    const token = localStorage.getItem("token"); // Assuming you saved JWT earlier
+
+    // Countdown Timer
+    let totalSeconds = 5 * 60;
     const timerElement = document.getElementById("timer");
 
     const interval = setInterval(() => {
       totalSeconds--;
-
       const minutes = Math.floor(totalSeconds / 60);
       const seconds = totalSeconds % 60;
-
       timerElement.textContent =
         (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
 
       if (totalSeconds <= 0) {
         clearInterval(interval);
-        window.location.href = "not.html"; // Redirect if no one joins
+        window.location.href = "not.html";
       }
     }, 1000);
+
+    // Room logic
+    const createInput = document.getElementById("create-input");
+    const joinInput = document.getElementById("join-input");
+    const startBtn = document.getElementById("start-btn");
+    const teammatesBox = document.getElementById("teammates-box");
+
+    createInput.addEventListener("keydown", async (e) => {
+      if (e.key === "Enter" && createInput.value.trim()) {
+        const name = createInput.value.trim();
+        try {
+          const res = await fetch("http://localhost:5000/api/room/create", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          const data = await res.json();
+          if (data.room) {
+            localStorage.setItem("roomCode", data.room.roomCode);
+            updateTeammates(data.room.users, name);
+          }
+        } catch (err) {
+          alert("Failed to create room");
+        }
+      }
+    });
+
+    joinInput.addEventListener("keydown", async (e) => {
+      if (e.key === "Enter" && joinInput.value.trim()) {
+        const roomCode = joinInput.value.trim().toUpperCase();
+        try {
+          const res = await fetch("/api/rooms/join", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ roomCode }),
+          });
+          const data = await res.json();
+          if (data.room) {
+            localStorage.setItem("roomCode", data.room.roomCode);
+            updateTeammates(data.room.users);
+          } else {
+            alert("Room not found");
+          }
+        } catch (err) {
+          alert("Failed to join room");
+        }
+      }
+    });
+
+    function updateTeammates(users, selfName = "You") {
+      teammatesBox.innerHTML = `
+        <h3>Team Mates</h3>
+        ${users.map((u, i) => `
+          <div class="teammate">
+            <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="avatar" />
+            ${i === users.length - 1 ? selfName : "Player " + (i + 1)}
+          </div>
+        `).join("")}
+      `;
+      startBtn.style.display = "block";
+    }
+
+    startBtn.addEventListener("click", () => {
+      window.location.href = "count.html";
+    });
   </script>
 </body>
 </html>
