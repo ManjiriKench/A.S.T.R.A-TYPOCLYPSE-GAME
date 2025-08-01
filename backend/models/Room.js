@@ -25,7 +25,7 @@ const RoomSchema = new mongoose.Schema({
 });
 
 // Optional performance indexes
-RoomSchema.index({ roomCode: 1 });
+// RoomSchema.index({ roomCode: 1 });
 RoomSchema.index({ 'finishedUsers.user': 1 });
 
 module.exports = mongoose.model('Room', RoomSchema);
