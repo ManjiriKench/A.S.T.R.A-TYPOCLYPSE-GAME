@@ -117,6 +117,14 @@
     }
   </style>
 </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
 <body>
   <div class="container">
     <div class="left">
@@ -124,22 +132,64 @@
     </div>
     <div class="right">
       <h2>Sign up</h2>
-      <div class="form-group">
-        <label>Full Name</label>
-        <input type="text" placeholder="Daniel Gallego" />
-      </div>
-      <div class="form-group">
-        <label>Email Address</label>
-        <input type="email" placeholder="hello@reallygreatsite.com" />
-      </div>
-      <div class="form-group" style="display: flex; gap: 10px;">
-        <input type="password" placeholder="Password" />
-        <input type="password" placeholder="Confirm Password" />
-      </div>
-      <button class="btn"onclick="window.location.href='login.html'">Create Account</button>
+      <form id="signup-form">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="name" name="name" placeholder="Daniel Gallego" required />
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="email" name="email" placeholder="hello@reallygreatsite.com" required />
+        </div>
+        <div class="form-group" style="display: flex; gap: 10px;">
+          <input type="password" id="password" name="password" placeholder="Password" required />
+          <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required />
+        </div>
+        <button type="submit" class="btn">Create Account</button>
+      </form>
       <div class="divider">Or</div>
-      <button class="login-btn"onclick="window.location.href='login.html'">Log in</button>
+      <button class="login-btn" onclick="window.location.href='login.html'">Log in</button>
     </div>
   </div>
+
+  <script>
+    const form = document.getElementById('signup-form');
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const username = form.name.value.trim();
+      const email = form.email.value.trim();
+      const password = form.password.value;
+      const confirmPassword = form.confirmPassword.value;
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match!");
+        return;
+      }
+
+      try {
+        const res = await fetch('http://localhost:5000/api/auth/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ username, email, password })
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          alert("Signup successful! Redirecting to login...");
+          window.location.href = "login.html";
+        } else {
+          alert(data.message || "Signup failed");
+        }
+      } catch (err) {
+        console.error(err);
+        alert("Something went wrong. Try again later.");
+      }
+    });
+  </script>
 </body>
 </html>
