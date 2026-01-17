@@ -1,27 +1,25 @@
-🎮 A.S.T.R.A – Typoclypse Game
-🧩 Project Overview
+A.S.T.R.A – Typoclypse Game 🧩
+📌 Project Overview
 
-Typoclypse is an interactive typing game developed as a project under the A.S.T.R.A Club.
-The game is designed to help users improve their typing speed, accuracy, and focus through a simple yet engaging gameplay experience.
+Typoclypse is a full-stack typing game developed under the A.S.T.R.A Club to improve typing speed, accuracy, and focus through interactive, time-based gameplay.
+The project is designed to blend learning with fun while also serving as a reference project for juniors to understand real-world web application structure and development practices.
 
-This project was built with the objective of combining learning with fun, while also serving as a demonstration project for juniors to understand how a real-world web-based game is structured and developed.
+🎯 Objectives
 
-🎯 Objectives of the Project
+Build an interactive and user-friendly typing game
 
-To build an interactive and user-friendly typing game
+Improve typing speed and accuracy through gameplay
 
-To enhance typing speed and accuracy through gameplay
+Demonstrate practical frontend and backend development
 
-To demonstrate practical frontend development skills
+Introduce beginners to real-world project structure and flow
 
-To introduce beginners to project structure, UI logic, and game flow
-
-To encourage hands-on learning within the A.S.T.R.A Club
+Encourage hands-on learning within the A.S.T.R.A Club
 
 🕹️ Game Description
 
-In Typoclypse, the player is required to type the given words or sentences accurately and within a limited time.
-The game evaluates the user’s performance based on:
+In Typoclypse, players are required to type the given words or sentences accurately within a limited time.
+The game evaluates performance based on:
 
 Typing speed
 
@@ -29,26 +27,26 @@ Accuracy
 
 Completion within the given time frame
 
-The game provides instant feedback, making it engaging and motivating for users to improve with repeated attempts.
+Instant feedback makes the game engaging and helps users improve with repeated attempts.
 
 🛠️ Technologies Used
 Frontend
 
 HTML – Structure of the game interface
 
-CSS – Styling and responsive design
+CSS – Styling and responsive layout
 
 JavaScript – Game logic, timer, input handling, and score calculation
 
-Backend (Planned / Partial)
+Backend
 
-Backend files were contributed by a team member
+Node.js – Backend runtime environment
 
-Due to certain constraints, backend integration was not fully completed
+Express.js – Server-side framework
 
-The project currently focuses on frontend gameplay functionality
+Modular architecture using controllers, routes, middleware, and models
 
-The frontend is fully functional and demonstrates the core concept of the game effectively.
+Backend logic structured to support scalability and future feature expansion
 
 📁 Project Structure
 A.S.T.R.A-TYPOCLYPSE-GAME/
@@ -59,48 +57,53 @@ A.S.T.R.A-TYPOCLYPSE-GAME/
 │   └── script.js
 │
 ├── backend/
-│   └── (backend-related files – partial)
+│   ├── server.js
+│   ├── app.js
+│   ├── controllers/
+│   ├── routes/
+│   ├── models/
+│   ├── middleware/
+│   ├── socket/
+│   └── package.json
 │
 └── README.md
 
 🚀 Features
 
-Clean and simple user interface
+Clean and simple UI
 
 Real-time typing input handling
 
 Timer-based gameplay
 
-Accuracy and speed evaluation
+Speed and accuracy evaluation
 
-Beginner-friendly code structure
+Organized full-stack project structure
 
-Easy to extend with additional levels or features
+Beginner-friendly and easy to extend
 
 🔮 Future Enhancements
 
-Complete backend integration
+User authentication
 
-User authentication and score storage
-
-Multiple difficulty levels
+Score storage and history
 
 Leaderboard system
 
-Mobile responsiveness improvements
+Multiple difficulty levels
 
-📌 How to Run the Project
+Improved mobile responsiveness
 
-Clone the repository:
+▶️ How to Run the Project
+Frontend
+cd frontend
+# Open index.html in a browser
 
-git clone https://github.com/ManjiriKench/A.S.T.R.A-TYPOCLYPSE-GAME.git
-
-
-Navigate to the frontend folder
-
-Open index.html in any modern web browser
+Backend
+cd backend
+npm install
+npm start
 
 📜 Conclusion
 
-Typoclypse is a beginner-friendly yet practical project that reflects the application of core web development concepts in a fun and engaging way.
-It serves as both a learning tool and a demonstration project within the A.S.T.R.A Club, encouraging students to explore development through hands-on projects.
+Typoclypse is a beginner-friendly yet practical full-stack project that demonstrates the application of core web development concepts in an engaging way. Developed under the A.S.T.R.A Club, it serves both as a learning tool and a demonstration project, encouraging students to explore development through hands-on experience.
